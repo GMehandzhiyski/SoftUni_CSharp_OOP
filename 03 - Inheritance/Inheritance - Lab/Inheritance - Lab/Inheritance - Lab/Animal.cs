@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Farm
 {
-    internal class Class1
+    public class Animal
     {
+        public void Eat()
+        {
+            Console.WriteLine("eating...");
+
+        }
+
     }
 }
