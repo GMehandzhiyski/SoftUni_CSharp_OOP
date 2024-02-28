@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ClassBoxData", "06.Encapsulation - Exercise\01.ClassBoxData.csproj", "{5C4500A2-E13F-4C72-B09D-2DC0F814B997}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalFarm", "AnimalFarm\AnimalFarm.csproj", "{C3AD7D67-4630-4457-95B2-6564519F9EDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C4500A2-E13F-4C72-B09D-2DC0F814B997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C4500A2-E13F-4C72-B09D-2DC0F814B997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C4500A2-E13F-4C72-B09D-2DC0F814B997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C4500A2-E13F-4C72-B09D-2DC0F814B997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3AD7D67-4630-4457-95B2-6564519F9EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3AD7D67-4630-4457-95B2-6564519F9EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3AD7D67-4630-4457-95B2-6564519F9EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3AD7D67-4630-4457-95B2-6564519F9EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0692356E-E60F-4293-A503-FCDC60E6B788}
+	EndGlobalSection
+EndGlobal
