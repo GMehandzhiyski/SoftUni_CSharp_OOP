@@ -20,7 +20,7 @@ namespace ShoppingSpree.Model
                 if (string.IsNullOrWhiteSpace(value)
                     || string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("Name cannot be empty");	
+                    throw new ArgumentException("Name cannot be empty");	
                 }
                 name = value;
 			}
@@ -32,7 +32,7 @@ namespace ShoppingSpree.Model
 			{
                 if (value <= 0 )
                 {
-                    throw new ArgumentNullException("Price cannot be zero or negative");
+                    throw new ArgumentException("Price cannot be zero or negative");
                 }
                 cost = value;
 			}

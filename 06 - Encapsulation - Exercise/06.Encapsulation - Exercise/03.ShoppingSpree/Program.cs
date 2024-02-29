@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Net.Security;
 using ShoppingSpree.Model;
 
 namespace ShoppingSpree
@@ -21,7 +22,7 @@ namespace ShoppingSpree
                  .Select(p => new Person(p[0], decimal.Parse(p[1])))
                  .ToList();
 
-                products = Console.ReadLine().Split(new[] {';'}).ToList()
+                products = Console.ReadLine().Split(new[] { ';' },StringSplitOptions.RemoveEmptyEntries).ToList()
                  .Select(t => t.Split('='))
                  .Select(p => new Product(p[0], decimal.Parse(p[1])))
                  .ToList();

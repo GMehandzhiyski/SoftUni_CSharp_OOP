@@ -26,7 +26,7 @@ namespace ShoppingSpree.Model
                 if (string.IsNullOrWhiteSpace(value)
                 || string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException("Name cannot be empty");
+                    throw new ArgumentException("Name cannot be empty");
                 }
                 name = value;
             }
