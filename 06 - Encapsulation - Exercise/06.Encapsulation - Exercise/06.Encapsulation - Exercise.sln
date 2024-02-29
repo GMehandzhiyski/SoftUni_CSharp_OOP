@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.ClassBoxData", "06.Encapsulation - Exercise\01.ClassBoxData.csproj", "{5C4500A2-E13F-4C72-B09D-2DC0F814B997}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.ClassBoxData", "06.Encapsulation - Exercise\01.ClassBoxData.csproj", "{5C4500A2-E13F-4C72-B09D-2DC0F814B997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalFarm", "AnimalFarm\AnimalFarm.csproj", "{C3AD7D67-4630-4457-95B2-6564519F9EDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimalFarm", "AnimalFarm\AnimalFarm.csproj", "{C3AD7D67-4630-4457-95B2-6564519F9EDF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.ShoppingSpree", "03.ShoppingSpree\03.ShoppingSpree.csproj", "{221BF6D8-CFF0-4E36-9283-691B5077A001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.PizzaCalories", "04.PizzaCalories\04.PizzaCalories.csproj", "{65061642-FBFD-44C3-85A4-02918CC340B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{C3AD7D67-4630-4457-95B2-6564519F9EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3AD7D67-4630-4457-95B2-6564519F9EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3AD7D67-4630-4457-95B2-6564519F9EDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{221BF6D8-CFF0-4E36-9283-691B5077A001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{221BF6D8-CFF0-4E36-9283-691B5077A001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{221BF6D8-CFF0-4E36-9283-691B5077A001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{221BF6D8-CFF0-4E36-9283-691B5077A001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65061642-FBFD-44C3-85A4-02918CC340B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65061642-FBFD-44C3-85A4-02918CC340B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65061642-FBFD-44C3-85A4-02918CC340B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65061642-FBFD-44C3-85A4-02918CC340B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
