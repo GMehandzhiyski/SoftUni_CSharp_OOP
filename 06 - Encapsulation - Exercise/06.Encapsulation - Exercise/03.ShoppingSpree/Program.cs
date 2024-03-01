@@ -17,7 +17,7 @@ namespace ShoppingSpree
 
             try
             {
-                peoples = Console.ReadLine().Split(';').ToList()
+                peoples = Console.ReadLine().Split(';',StringSplitOptions.RemoveEmptyEntries).ToList()
                  .Select(t => t.Split('='))
                  .Select(p => new Person(p[0], decimal.Parse(p[1])))
                  .ToList();
