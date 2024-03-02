@@ -30,11 +30,11 @@ namespace PizzaCalories.Model
 			get { return toppintType; }
 			private set 
 			{
-                if (!toppingCalories.ContainsKey(value.ToLower()))
+                if (!toppingCalories.Keys.Contains(value.ToLower()))
                 {
 					throw new ArgumentException($"Cannot place {value} on top of your pizza.");
                 }
-                toppintType = value;
+                toppintType = value.ToLower();
 			}
 		}
 
@@ -43,7 +43,7 @@ namespace PizzaCalories.Model
 			get { return weight; }
 			private set
 			{
-                if (value < 0
+                if (value < 1
 					|| value > 50)
                 {
 					throw new ArgumentException($"{toppintType} weight should be in the range [1..50].");
@@ -57,7 +57,7 @@ namespace PizzaCalories.Model
 			get 
 			{ double cuurCaloriesTopping = toppingCalories[ToppintType];
 
-                return 2 * Weight * cuurCaloriesTopping ; 
+                return 2*(Weight*cuurCaloriesTopping); 
 			}
 			
 		}
