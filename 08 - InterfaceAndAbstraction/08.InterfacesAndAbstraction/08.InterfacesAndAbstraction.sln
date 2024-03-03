@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.DefineAnInterfaceIPerson", "08.InterfacesAndAbstraction\01.DefineAnInterfaceIPerson.csproj", "{5D42DA5F-205A-46E6-8D9A-1182B46A05E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.DefineAnInterfaceIPerson", "08.InterfacesAndAbstraction\01.DefineAnInterfaceIPerson.csproj", "{5D42DA5F-205A-46E6-8D9A-1182B46A05E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.MultipleImplementation", "02.MultipleImplementation\02.MultipleImplementation.csproj", "{CECC2858-F211-46DC-B557-234E964E67FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5D42DA5F-205A-46E6-8D9A-1182B46A05E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D42DA5F-205A-46E6-8D9A-1182B46A05E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D42DA5F-205A-46E6-8D9A-1182B46A05E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CECC2858-F211-46DC-B557-234E964E67FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CECC2858-F211-46DC-B557-234E964E67FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CECC2858-F211-46DC-B557-234E964E67FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CECC2858-F211-46DC-B557-234E964E67FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
