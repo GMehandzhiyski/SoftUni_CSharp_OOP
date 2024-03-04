@@ -5,11 +5,13 @@ VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01.DefineAnInterfaceIPerson", "08.InterfacesAndAbstraction\01.DefineAnInterfaceIPerson.csproj", "{5D42DA5F-205A-46E6-8D9A-1182B46A05E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02.MultipleImplementation", "02.MultipleImplementation\02.MultipleImplementation.csproj", "{CECC2858-F211-46DC-B557-234E964E67FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.MultipleImplementation", "02.MultipleImplementation\02.MultipleImplementation.csproj", "{CECC2858-F211-46DC-B557-234E964E67FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.Telephony", "03.Telephony\03.Telephony.csproj", "{344E09A9-C66F-4222-8C1D-A996DE6CBF7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.Telephony", "03.Telephony\03.Telephony.csproj", "{344E09A9-C66F-4222-8C1D-A996DE6CBF7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.BorderControl", "04.BorderControl\04.BorderControl.csproj", "{56567199-AAF8-47E9-99D4-2AF01ED76002}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04.BorderControl", "04.BorderControl\04.BorderControl.csproj", "{56567199-AAF8-47E9-99D4-2AF01ED76002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05.BirthdayCelebrations", "05.BirthdayCelebrations\05.BirthdayCelebrations.csproj", "{4EC5770A-2151-4F3D-971E-ED3E7CF19AFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{56567199-AAF8-47E9-99D4-2AF01ED76002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56567199-AAF8-47E9-99D4-2AF01ED76002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56567199-AAF8-47E9-99D4-2AF01ED76002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EC5770A-2151-4F3D-971E-ED3E7CF19AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EC5770A-2151-4F3D-971E-ED3E7CF19AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EC5770A-2151-4F3D-971E-ED3E7CF19AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EC5770A-2151-4F3D-971E-ED3E7CF19AFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
