@@ -24,6 +24,7 @@ namespace FoodShortage
             {
                 AddFood(peopleName, citizens, rebels);
             }
+
            int citizensSum = citizens.Sum(p => p.Food);
            int rebelsSum = rebels.Sum(p => p.Food);
 
