@@ -46,7 +46,6 @@ namespace BirthdayCelebrations
 
             if (!finalLisFakeNumbers.Any())
             {
-                Console.WriteLine("");
                 return;
             }
             foreach (var number in finalLisFakeNumbers)
