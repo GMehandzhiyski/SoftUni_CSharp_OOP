@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace _03.Raiding.Modules.Interfaces
 {
-    internal interface Interface1
+    public interface IBaseHero
     {
+        string Name { get; }
+        int Power { get; }
+
+        public string CastAbility();
     }
 }

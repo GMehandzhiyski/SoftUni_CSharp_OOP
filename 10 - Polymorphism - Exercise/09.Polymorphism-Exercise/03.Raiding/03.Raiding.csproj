@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="Factories\Interfaces\" />
-    <Folder Include="Modules\Interfaces\" />
   </ItemGroup>
 
 </Project>
