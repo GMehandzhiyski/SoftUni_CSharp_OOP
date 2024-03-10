@@ -8,10 +8,10 @@ namespace Vehicles.Models
 {
     public class Car : Vehicle
     {
-        private const double AirConditioner = 0.9;
+        private const double airConditioner = 0.9;
 
         public Car(double fuelQuantity, double consumption, double tankCapacity) 
-            : base(fuelQuantity, consumption, AirConditioner, tankCapacity)
+            : base(fuelQuantity, consumption, airConditioner, tankCapacity)
         {
         }
     }

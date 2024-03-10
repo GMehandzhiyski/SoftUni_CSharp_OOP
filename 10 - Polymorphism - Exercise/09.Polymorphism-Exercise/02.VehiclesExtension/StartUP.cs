@@ -7,7 +7,7 @@ using Vehicles.IO.Interfaces;
 
 namespace Vehicles
 {
-    public class StartUP
+    public class StartUp
     {
         static void Main(string[] args)
         {
