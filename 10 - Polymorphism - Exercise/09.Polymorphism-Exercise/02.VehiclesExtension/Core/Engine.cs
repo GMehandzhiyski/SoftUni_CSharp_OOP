@@ -29,6 +29,20 @@ namespace Vehicles.Core
 
             // business Logic
 
+/*
+Car 30 0.04 70
+Truck 100 0.5 300
+Bus 40 0.3 150
+8
+Refuel Car -10
+Refuel Truck 0
+Refuel Car 10
+Refuel Car 300
+Drive Bus 10
+Refuel Bus 1000
+DriveEmpty Bus 100
+Refuel Truck 1000
+*/
             vehicles.Add(CreateVehicle());
             vehicles.Add(CreateVehicle());
             vehicles.Add(CreateVehicle());
@@ -80,14 +94,15 @@ namespace Vehicles.Core
             {
                 writer.WriteLine(vehicle.Driving(value));
             }
+
             else if (method == "Refuel")
             {
                 vehicle.Refueling(value);
             }
+
             else if (method == "DriveEmpty")
             {
-                
-               
+                writer.WriteLine(vehicle.DrivingWithoutPeople(value));
             }
         }
     }

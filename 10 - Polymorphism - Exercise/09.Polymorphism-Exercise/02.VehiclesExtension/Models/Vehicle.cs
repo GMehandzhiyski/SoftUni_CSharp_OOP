@@ -11,17 +11,18 @@ namespace Vehicles.Models
 {
     public abstract class Vehicle : IVehicle
     {
-        private double AirConditioner;
+        private double airConditioner;
         private double fuelQuantity;
         private double tankCapacity;
+        private double fuelConsumption;
   
 
         public Vehicle(double fuelQuantity, double consumption, double airConditioner, double tankCapacity)
         {
-            AirConditioner = airConditioner;
+            TankCapacity = tankCapacity;    
+            this.airConditioner = airConditioner;
             FuelQuantity = fuelQuantity;
             FuelConsumption = consumption;
-            TankCapacity = tankCapacity;    
         }
 
         public double FuelQuantity
@@ -39,7 +40,6 @@ namespace Vehicles.Models
                 {
                     fuelQuantity = value;
                 }
-
                 else
                 {
                     fuelQuantity = 0;
@@ -51,7 +51,7 @@ namespace Vehicles.Models
             get { return tankCapacity; }
             protected set
             {
-                if (value < 0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("Tank must be a positive number");
                 }
@@ -62,12 +62,22 @@ namespace Vehicles.Models
 
         
 
-        public double FuelConsumption { get; private set; }
-
+        public double FuelConsumption
+        {
+            get { return fuelConsumption; }
+            protected set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Consumption must be a positive number");
+                }
+                fuelConsumption = value;
+            }
+        }
 
         public virtual string Driving(double distance)
         {
-            double consumption = FuelConsumption + AirConditioner;
+            double consumption = FuelConsumption + airConditioner;
             if (FuelQuantity <= distance * consumption)
             {
                 throw new ArgumentException($"{GetType().Name} needs refueling");

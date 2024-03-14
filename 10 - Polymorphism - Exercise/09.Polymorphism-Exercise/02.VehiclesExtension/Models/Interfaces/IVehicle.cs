@@ -16,5 +16,6 @@ namespace Vehicles.Models.Interfaces
 
         public string Driving(double distance);
         public void Refueling(double amount);
+        public string DrivingWithoutPeople(double distance);
     }
 }
