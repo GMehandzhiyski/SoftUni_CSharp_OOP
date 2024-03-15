@@ -12,28 +12,51 @@ namespace Stealer
     public class Spy
     {
 
-
-
-        public string RevealPrivateMethods(string investigationClass)
+        public string CollectGettersAndSetters(string investigationClass)
         {
             StringBuilder sb = new StringBuilder();
+
             Type classType = Type.GetType(investigationClass);
             MethodInfo[] classMethods = classType.GetMethods(
                 BindingFlags.Instance |
+                BindingFlags.Public |
                 BindingFlags.NonPublic);
 
+            foreach (MethodInfo method in classMethods.Where(m => m.Name.StartsWith("get"))) 
+            { 
+               sb.AppendLine($"{method.Name} will return {method.ReturnType.FullName}");
+            }
 
-            sb.AppendLine($"All private Methods of Class: {classType.FullName}");
-            sb.AppendLine($"Base Class: {classType.BaseType.Name}");
-
-            foreach (MethodInfo method in classMethods)
+            foreach (var method in classMethods.Where(m => m.Name.StartsWith("set")))
             {
-                sb.AppendLine(method.Name);
+                sb.AppendLine($"{method.Name} will set field of {method.GetParameters().First().ParameterType}");
             }
 
 
-            return  sb.ToString().TrimEnd();
+            return sb.ToString().TrimEnd();
         }
+
+
+        //public string RevealPrivateMethods(string investigationClass)
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    Type classType = Type.GetType(investigationClass);
+        //    MethodInfo[] classMethods = classType.GetMethods(
+        //        BindingFlags.Instance |
+        //        BindingFlags.NonPublic);
+
+
+        //    sb.AppendLine($"All private Methods of Class: {classType.FullName}");
+        //    sb.AppendLine($"Base Class: {classType.BaseType.Name}");
+
+        //    foreach (MethodInfo method in classMethods)
+        //    {
+        //        sb.AppendLine(method.Name);
+        //    }
+
+
+        //    return  sb.ToString().TrimEnd();
+        //}
 
 
 
