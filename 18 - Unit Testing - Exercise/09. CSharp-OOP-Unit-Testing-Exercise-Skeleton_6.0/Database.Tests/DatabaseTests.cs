@@ -36,7 +36,7 @@ namespace Database.Tests
 
             Assert.AreEqual(16, database.Count);
         }
-
+       
         [Test]
         public void CanCreateDatabaseWithMoreThan16()
         {
