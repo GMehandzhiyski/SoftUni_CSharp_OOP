@@ -4,45 +4,116 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Handball.Models.Contracts;
+using Handball.Utilities.Messages;
 
 namespace Handball.Models
 {
     public class Team : ITeam
     {
+        private string name;
+        private int pointsEarned;
+        private List<IPlayer> players;
+
         public Team(string name)
         {
-            
+            Name = name;
+            players = new List<IPlayer>();
         }
-        public string Name => throw new NotImplementedException();
 
-        public int PointsEarned => throw new NotImplementedException();
+        public string Name
+        {
+            get { return name; }
 
-        public double OverallRating => throw new NotImplementedException();
+            private set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    string.Format(ExceptionMessages.TeamNameNull);
+                }
+                name = value;
+            }
 
-        public IReadOnlyCollection<IPlayer> Players => throw new NotImplementedException();
+        }
+
+        public int PointsEarned
+        {
+            get { return pointsEarned; }
+
+            private set { pointsEarned = value; }
+        }
+
+        public double OverallRating
+        {
+            get
+            {
+                if (!players.Any())
+                {
+                    return 0;
+                }
+
+                return Math.Round(players.Average(p => p.Rating), 2);
+
+            }
+
+            //private set { pointsEarned = value; }
+        }
+
+        public IReadOnlyCollection<IPlayer> Players
+        {
+            get { return players.AsReadOnly(); }
+        }
 
         public void SignContract(IPlayer player)
         {
-            throw new NotImplementedException();
+            players.Add(player);
         }
         public void Win()
         {
-            throw new NotImplementedException();
+            PointsEarned += 3;
+            foreach (var currPlayer in players)
+            {
+                currPlayer.IncreaseRating();
+            }
         }
         public void Lose()
         {
-            throw new NotImplementedException();
+            foreach (var currPlayer in players)
+            {
+                currPlayer.DecreaseRating();
+            }
         }
 
         public void Draw()
         {
-            throw new NotImplementedException();
+            PointsEarned += 1;
+            IPlayer goalKeeper = players.FirstOrDefault(p => p is Goalkeeper);
+
+            if (goalKeeper != null)
+            {
+                goalKeeper.IncreaseRating();
+            }
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Team: {Name} Points: {PointsEarned}");
+            sb.AppendLine($"--Overall rating: {OverallRating}");
+            sb.AppendLine($"Players:");
+            if (players != null)
+            {
+                sb.Append("none");
+            }
+            else
+            {
+                foreach (var currPlayer in players)
+                {
+                    sb.Append($"{currPlayer.Name}, ");
+                }
+            }
+            return sb.ToString().TrimEnd(',',' ');
         }
 
     }

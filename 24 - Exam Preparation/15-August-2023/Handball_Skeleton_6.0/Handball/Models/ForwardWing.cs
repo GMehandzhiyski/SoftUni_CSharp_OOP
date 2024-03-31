@@ -8,9 +8,20 @@ namespace Handball.Models
 {
     public class ForwardWing : Player
     {
-        public ForwardWing(string name, double rating)
-            : base(name, rating)
+        private const double ForwardWingRating = 5.5;
+        public ForwardWing(string name)
+            : base(name, ForwardWingRating)
         {
         }
+        public override void IncreaseRating()
+        {
+            Rating += 1.25;
+        }
+
+        public override void DecreaseRating()
+        {
+            Rating -= 0.75;
+        }
+
     }
 }

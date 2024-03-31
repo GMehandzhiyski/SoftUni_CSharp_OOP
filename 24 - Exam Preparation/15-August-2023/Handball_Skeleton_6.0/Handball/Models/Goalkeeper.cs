@@ -8,9 +8,21 @@ namespace Handball.Models
 {
     public class Goalkeeper : Player
     {
-        public Goalkeeper(string name, double rating)
-            : base(name, rating)
+        private const double GoalkeeperRating = 2.5;
+        public Goalkeeper(string name)
+            : base(name, GoalkeeperRating)
         {
         }
+        public override void IncreaseRating()
+        {
+         
+            Rating += 0.75;
+        }
+
+        public override void DecreaseRating()
+        {
+            Rating -= 1.25;
+        }
+
     }
 }

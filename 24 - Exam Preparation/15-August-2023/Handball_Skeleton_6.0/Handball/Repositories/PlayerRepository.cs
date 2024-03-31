@@ -10,26 +10,35 @@ namespace Handball.Repositories
 {
     public class PlayerRepository : IRepository<IPlayer>
     {
-        public IReadOnlyCollection<IPlayer> Models => throw new NotImplementedException();
+        private List<IPlayer> players;
+
+        public PlayerRepository()
+        {
+            players = new List<IPlayer>();
+        }
+        public IReadOnlyCollection<IPlayer> Models => players;
 
         public void AddModel(IPlayer model)
         {
-            throw new NotImplementedException();
+           players.Add(model);
+        }
+        public bool RemoveModel(string name)
+        {
+           bool result = players.Remove(players.FirstOrDefault(p => p.Name == name));
+            return result;
         }
 
         public bool ExistsModel(string name)
         {
-            throw new NotImplementedException();
+            bool result = players.Any(p => p.Name == name);
+            return result;
         }
 
         public IPlayer GetModel(string name)
         {
-            throw new NotImplementedException();
+            var result = players.FirstOrDefault(p => p.Name == name);   
+            return result;
         }
 
-        public bool RemoveModel(string name)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
