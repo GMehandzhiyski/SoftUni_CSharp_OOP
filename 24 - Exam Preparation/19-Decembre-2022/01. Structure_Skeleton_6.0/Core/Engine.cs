@@ -17,7 +17,8 @@
         public Engine()
         {
             this.reader = new Reader();
-            this.writer = new Writer();
+            this.writer = new TextWriter();
+            //this.writer = new Writer();
             this.controller = new Controller();
         }
 

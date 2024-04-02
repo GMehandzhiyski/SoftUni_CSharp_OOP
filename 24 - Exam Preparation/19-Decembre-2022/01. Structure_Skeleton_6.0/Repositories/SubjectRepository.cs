@@ -10,21 +10,27 @@ namespace UniversityCompetition.Repositories
 {
     public class SubjectRepository : IRepository<ISubject>
     {
-        public IReadOnlyCollection<ISubject> Models => throw new NotImplementedException();
+        private readonly List<ISubject> subjects;
+
+        public SubjectRepository()
+        {
+            subjects = new List<ISubject>();
+        }
 
         public void AddModel(ISubject model)
         {
-            throw new NotImplementedException();
+            subjects.Add(model);
         }
 
         public ISubject FindById(int id)
         {
-            throw new NotImplementedException();
+            return subjects.FirstOrDefault(m => m.Id == id);
         }
 
         public ISubject FindByName(string name)
         {
-            throw new NotImplementedException();
+            return subjects.FirstOrDefault(m => m.Name == name);
         }
+        public IReadOnlyCollection<ISubject> Models => subjects;
     }
 }

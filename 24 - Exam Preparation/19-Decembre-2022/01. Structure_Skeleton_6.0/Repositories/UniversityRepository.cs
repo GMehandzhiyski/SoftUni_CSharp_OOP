@@ -10,21 +10,28 @@ namespace UniversityCompetition.Repositories
 {
     public class UniversityRepository : IRepository<IUniversity>
     {
-        public IReadOnlyCollection<IUniversity> Models => throw new NotImplementedException();
+        private readonly List<IUniversity> universities;
+
+        public UniversityRepository()
+        {
+            universities = new List<IUniversity>();
+        }
+
+        public IReadOnlyCollection<IUniversity> Models => universities;
 
         public void AddModel(IUniversity model)
         {
-            throw new NotImplementedException();
+            universities.Add(model);
         }
 
         public IUniversity FindById(int id)
         {
-            throw new NotImplementedException();
+           return universities.FirstOrDefault(x => x.Id == id);
         }
 
         public IUniversity FindByName(string name)
         {
-            throw new NotImplementedException();
+            return universities.FirstOrDefault(x => x.Name == name);
         }
     }
 }

@@ -4,29 +4,69 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniversityCompetition.Models.Contracts;
+using UniversityCompetition.Utilities.Messages;
 
 namespace UniversityCompetition.Models
 {
     public class Student : IStudent
     {
-        public int Id => throw new NotImplementedException();
+        private int id;
+        private string firstName;
+        private string lastName;
+        private readonly List<int> coveredExams;
+        private IUniversity university;
 
-        public string FirstName => throw new NotImplementedException();
+        public Student(int id, string firstName, string lastName)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            coveredExams = new List<int>();
+        }
 
-        public string LastName => throw new NotImplementedException();
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
-        public IReadOnlyCollection<int> CoveredExams => throw new NotImplementedException();
+        public string FirstName
+        {
+            get { return firstName; }
+            set 
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.NameNullOrWhitespace));
+                }
+                firstName = value; 
+            }
+        }
+        public string LastName
+        {
+            get { return lastName; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(string.Format(ExceptionMessages.NameNullOrWhitespace));
+                }
+               lastName = value;
+            }
+        }
 
-        public IUniversity University => throw new NotImplementedException();
+        public IReadOnlyCollection<int> CoveredExams => this.coveredExams;
+
+        public IUniversity University => this.university;
 
         public void CoverExam(ISubject subject)
         {
-            throw new NotImplementedException();
+            coveredExams.Add(subject.Id);
         }
 
         public void JoinUniversity(IUniversity university)
         {
-            throw new NotImplementedException();
+            this.university = university;
         }
     }
 }
