@@ -2,10 +2,8 @@
 using BankLoan.Utilities.Messages;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BankLoan.Models
 {
@@ -84,27 +82,27 @@ namespace BankLoan.Models
             loans.Add(loan);
         }
 
+
         public string GetStatistics()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"Name: {name}, Type: {GetType().Name}");
+            sb.Append("Clients: ");
 
-            if (clients.Count > 0)
+            if (clients.Count == 0)
             {
-                foreach (var client in clients)
-                {
-                    sb.Append(client.Name);
-                    sb.Append(", ");
-                }
-
-                sb.ToString().TrimEnd(',', ' ');
+                sb.Append("none");
             }
             else
             {
-                sb.AppendLine("Clients: none");
+                foreach (var currClient in clients)
+                {
+                    sb.Append(currClient.Name + ", ");
+                }
+               sb.Length -= 2;
             }
-
+            sb.AppendLine();
             sb.AppendLine($"Loans: {loans.Count}, Sum of Rates: {loans.Sum(l => l.InterestRate)}");
 
 

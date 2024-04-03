@@ -18,8 +18,17 @@ namespace BankLoan.Models
             this.amount = amount;
         }
 
-        public int InterestRate => interestRate;
 
-        public double Amount => amount;
+
+        public int InterestRate
+        {
+            get { return interestRate; }
+            private set { interestRate = value; }
+        }
+        public double Amount
+        {
+            get { return amount; }
+            private set { amount = value; }
+        }
     }
 }
