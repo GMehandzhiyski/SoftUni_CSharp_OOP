@@ -22,8 +22,8 @@ namespace BookingApp.Models.Hotels
         {
             FullName = fullName;
             Category = category;
-            Rooms = new RoomRepository();
-            Bookings = new BookingRepository();
+            RoomsRepo = new RoomRepository();
+            BookingsRepo = new BookingRepository();
         }
 
         public string FullName
@@ -55,12 +55,12 @@ namespace BookingApp.Models.Hotels
         }
 
         public double Turnover => 
-            Math.Round(Bookings
+            Math.Round(BookingsRepo
             .All()
             .Sum(x => x.ResidenceDuration * x.Room.PricePerNight),2);
         
-        public IRepository<IRoom> Rooms { get; set; }
+        public IRepository<IRoom> RoomsRepo { get; set; }
 
-        public IRepository<IBooking> Bookings { get; set; }
+        public IRepository<IBooking> BookingsRepo { get; set; }
     }
 }

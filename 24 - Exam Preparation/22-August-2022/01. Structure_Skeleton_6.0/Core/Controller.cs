@@ -19,23 +19,23 @@ namespace BookingApp.Core
 {
     public class Controller : IController
     {
-        private readonly IRepository<IHotel> hotels;
+        private readonly IRepository<IHotel> hotelsRepo;
 
         public Controller()
         {
-            hotels = new HotelRepository();
+            hotelsRepo = new HotelRepository();
         }
         public string AddHotel(string hotelName, int category)
         {
-        
-            if (hotels.Select(hotelName) != null)
+
+            if (hotelsRepo.Select(hotelName) != null)
             {
                 return string.Format(OutputMessages.HotelAlreadyRegistered, hotelName);
             }
 
            
             IHotel hotel = new Hotel(hotelName,category); 
-            hotels.AddNew(hotel);
+            hotelsRepo.AddNew(hotel);
 
             return string.Format(OutputMessages.HotelSuccessfullyRegistered, category, hotelName);
 
@@ -43,13 +43,13 @@ namespace BookingApp.Core
         }
         public string UploadRoomTypes(string hotelName, string roomTypeName)
         {
-            if (hotels.Select(hotelName) == null)
+            if (hotelsRepo.Select(hotelName) == null)
             {
                 return string.Format(OutputMessages.HotelNameInvalid, hotelName);
             }
 
-            IHotel hotel = hotels.Select(hotelName);
-            if (hotel.Rooms.Select(roomTypeName) != default)
+            IHotel hotel = hotelsRepo.Select(hotelName);
+            if (hotel.RoomsRepo.Select(roomTypeName) != default)
             {
                 return string.Format(OutputMessages.RoomTypeAlreadyCreated);
             }
@@ -73,17 +73,17 @@ namespace BookingApp.Core
                 throw new ArgumentException(ExceptionMessages.RoomTypeIncorrect);
             }
 
-            hotel.Rooms.AddNew(room);
+            hotel.RoomsRepo.AddNew(room);
             return string.Format(OutputMessages.RoomTypeAdded, roomTypeName,hotelName);
         }
         public string SetRoomPrices(string hotelName, string roomTypeName, double price)
         {
-            if (hotels.Select(hotelName) == null)
+            if (hotelsRepo.Select(hotelName) == null)
             {
                 return string.Format(OutputMessages.HotelNameInvalid, hotelName);
             }
 
-            IHotel hotel = hotels.Select(hotelName);
+            IHotel hotel = hotelsRepo.Select(hotelName);
 
             if (roomTypeName != nameof(DoubleBed)
                 && roomTypeName != nameof(Apartment)
@@ -92,12 +92,12 @@ namespace BookingApp.Core
                 throw new ArgumentException(ExceptionMessages.RoomTypeIncorrect);
             }
 
-            if (hotels.Select(roomTypeName) != default)
+            if (hotelsRepo.Select(roomTypeName) != default)
             {
                 return string.Format(OutputMessages.RoomTypeNotCreated);
             }
 
-            IRoom room = hotel.Rooms.Select(roomTypeName);
+            IRoom room = hotel.RoomsRepo.Select(roomTypeName);
 
             if (room.PricePerNight > 0)
             {
@@ -112,13 +112,13 @@ namespace BookingApp.Core
         public string BookAvailableRoom(int adults, int children, int duration, int category)
         {
 
-            if (hotels.All().FirstOrDefault(h => h.Category == category) == default)
+            if (hotelsRepo.All().FirstOrDefault(h => h.Category == category) == default)
             {
                 return string.Format(OutputMessages.CategoryInvalid,category);
             }
 
             var orderedHotel =
-                hotels
+                hotelsRepo
                 .All()
                 .Where(h => h.Category == category)
                 .OrderBy(t => t.Turnover)
@@ -127,7 +127,7 @@ namespace BookingApp.Core
             foreach (var hotel in orderedHotel)
             {
                 var selectedRoom = 
-                hotel.Rooms
+                hotel.RoomsRepo
                 .All()
                 .Where(h => h.PricePerNight > 0)
                 .Where(b => b.BedCapacity >= adults + children)
@@ -136,11 +136,11 @@ namespace BookingApp.Core
 
                 if (selectedRoom != null) 
                 {
-                    int bookingNumber = hotels
+                    int bookingNumber = hotelsRepo
                         .All()
-                        .Sum(h => h.Bookings.All().Count) + 1;
+                        .Sum(h => h.BookingsRepo.All().Count) + 1;
                     IBooking booking = new Booking(selectedRoom, duration, adults, children, bookingNumber);
-                    hotel.Bookings.AddNew(booking);
+                    hotel.BookingsRepo.AddNew(booking);
                     return string.Format(OutputMessages.BookingSuccessful, bookingNumber, hotel.FullName);
                 }
             }
@@ -150,7 +150,7 @@ namespace BookingApp.Core
 
         public string HotelReport(string hotelName)
         {
-            IHotel hotel = hotels.Select(hotelName);
+            IHotel hotel = hotelsRepo.Select(hotelName);
 
             if (hotel == default)
             {
@@ -165,13 +165,13 @@ namespace BookingApp.Core
             sb.AppendLine("--Bookings:");
             sb.AppendLine();
 
-            if (hotel.Bookings.All().Count == 0)
+            if (hotel.BookingsRepo.All().Count == 0)
             {
                 sb.AppendLine("none");
             }
             else 
             {
-                foreach (var booking in hotel.Bookings.All())
+                foreach (var booking in hotel.BookingsRepo.All())
                 {
                     sb.AppendLine($"{booking.BookingSummary()}");
                     sb.AppendLine();

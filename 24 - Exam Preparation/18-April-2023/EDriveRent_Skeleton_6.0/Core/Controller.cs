@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,10 +66,12 @@ namespace EDriveRent.Core
                 if (vehicleType == nameof(PassengerCar))
                 {
                     IVehicle currVehicle = new PassengerCar(brand, model, licensePlateNumber);
+                    vehicleRepository.AddModel(currVehicle);
                 }
                 else
                 {
                     IVehicle currVehicle = new CargoVan(brand, model, licensePlateNumber);
+                    vehicleRepository.AddModel(currVehicle);
                 }
 
                 result = string.Format(OutputMessages.VehicleAddedSuccessfully, brand, model, licensePlateNumber);
@@ -87,8 +90,7 @@ namespace EDriveRent.Core
             IRoute sameRoute = routeRepository
                 .GetAll()
                 .FirstOrDefault(s => s.StartPoint == startPoint
-                       && s.EndPoint == endPoint
-                       && s.Length == length);
+                       && s.EndPoint == endPoint);
 
             if (sameRoute != default)
             {
@@ -104,6 +106,9 @@ namespace EDriveRent.Core
                 else if (sameRoute.Length > length)
                 { 
                     sameRoute.LockRoute();
+                    IRoute newRoute = new Route(startPoint, endPoint, length, roudeId);
+                    routeRepository.AddModel(newRoute);
+                    result = string.Format(OutputMessages.NewRouteAdded, startPoint, endPoint, length);
                 }
             }
             else
@@ -119,7 +124,45 @@ namespace EDriveRent.Core
 
         public string MakeTrip(string drivingLicenseNumber, string licensePlateNumber, string routeId, bool isAccidentHappened)
         {
-            throw new NotImplementedException();
+           string result = string.Empty;
+
+            var currUser = userRepository.FindById(drivingLicenseNumber);
+            var currVehicle = vehicleRepository.FindById(licensePlateNumber);
+            var currRoute = routeRepository.FindById(routeId);
+
+            if (currUser.IsBlocked)
+            {
+                result = string.Format(OutputMessages.UserBlocked, drivingLicenseNumber);
+            }
+
+            else if (currVehicle.IsDamaged)
+            {
+                result = string.Format(OutputMessages.VehicleDamaged, licensePlateNumber);
+            }
+
+            else if (currRoute.IsLocked)
+            {
+                result = string.Format(OutputMessages.RouteLocked, routeId);
+            }
+            else 
+            {
+                currVehicle.Drive(currRoute.Length);
+                // currVehicle.BatteryLevel(currRoute.Length);
+
+                if (isAccidentHappened)
+                {
+                    currVehicle.ChangeStatus();
+                    currUser.DecreaseRating();
+
+                }
+                else
+                { 
+                 currUser.IncreaseRating();
+                }
+
+                result = currVehicle.ToString().Trim();
+            }
+            return result;
         }
 
 
