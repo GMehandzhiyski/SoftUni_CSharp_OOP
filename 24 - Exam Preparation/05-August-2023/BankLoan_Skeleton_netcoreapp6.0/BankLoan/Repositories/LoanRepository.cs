@@ -10,21 +10,26 @@ namespace BankLoan.Repositories
 {
     public class LoanRepository : IRepository<ILoan>
     {
-        public IReadOnlyCollection<ILoan> Models => throw new NotImplementedException();
+        private List<ILoan> loans;
+        public LoanRepository()
+        {
+            loans = new List<ILoan>();
+        }
+        public IReadOnlyCollection<ILoan> Models => loans.AsReadOnly();
 
         public void AddModel(ILoan model)
         {
-            throw new NotImplementedException();
+            loans.Add(model);
+        }
+        public bool RemoveModel(ILoan model)
+        {
+           return loans.Remove(model);  
         }
 
         public ILoan FirstModel(string name)
         {
-            throw new NotImplementedException();
+            return loans.FirstOrDefault(l => l.GetType().Name == name);
         }
 
-        public bool RemoveModel(ILoan model)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
