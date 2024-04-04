@@ -16,7 +16,7 @@ namespace HighwayToPeak.Models
 
         protected Climber(string name, int stamina)
         {
-            this.name = name;   
+            this.name = name;
             this.stamina = stamina;
             conqueredPeaks = new List<string>();
         }
@@ -30,7 +30,7 @@ namespace HighwayToPeak.Models
                 {
                     throw new ArgumentException(ExceptionMessages.ClimberNameNullOrWhiteSpace);
                 }
-                name = value; 
+                name = value;
             }
         }
 
@@ -53,7 +53,7 @@ namespace HighwayToPeak.Models
                 {
                     stamina = value;
                 }
-                
+
             }
         }
 
@@ -62,23 +62,26 @@ namespace HighwayToPeak.Models
 
         public void Climb(IPeak peak)
         {
-            
+
             if (conqueredPeaks.Contains(peak.Name) == false)
             {
                 conqueredPeaks.Add(peak.Name);
-                if (peak.DifficultyLevel == "Extreme")
-                {
-                    stamina -= 6;
-                }
-                else if (peak.DifficultyLevel == "Hard")
-                {
-                    stamina -= 4;
-                }
-                else if (peak.DifficultyLevel == "Moderate")
-                {
-                    stamina -= 2;
-                }
+
             }
+
+            if (peak.DifficultyLevel == "Extreme")
+            {
+                stamina -= 6;
+            }
+            else if (peak.DifficultyLevel == "Hard")
+            {
+                stamina -= 4;
+            }
+            else if (peak.DifficultyLevel == "Moderate")
+            {
+                stamina -= 2;
+            }
+
         }
 
         public abstract void Rest(int daysCount);
@@ -88,9 +91,18 @@ namespace HighwayToPeak.Models
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine($"{GetType().Name} - Name: {Name}, Stamina: {Stamina}");
-            sb.AppendLine($"Peaks conquered: no peaks conquered/{conqueredPeaks.Count}");
+            if (conqueredPeaks.Any())
+            {
+                sb.AppendLine($"Peaks conquered: {conqueredPeaks.Count}");
 
-            return sb.ToString().Trim() ;
+            }
+            else
+            {
+                sb.AppendLine($"Peaks conquered: no peaks conquered");
+            }
+
+
+            return sb.ToString().Trim();
         }
     }
 }

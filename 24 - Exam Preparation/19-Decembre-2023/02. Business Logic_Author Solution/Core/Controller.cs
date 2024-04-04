@@ -1,4 +1,4 @@
-﻿namespace HighwayToPeak.Core
+﻿  namespace HighwayToPeak.Core
 {
     using HighwayToPeak.Core.Contracts;
     using HighwayToPeak.Models;
