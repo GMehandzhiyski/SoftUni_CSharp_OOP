@@ -46,18 +46,18 @@
 
         public string VolumeChange(string direction, int units)
         {
-            if(direction == "UP")
+            if (direction == "UP")
             {
                 lastVolume += Math.Abs(units);
-                if(lastVolume > 100)
+                if (lastVolume > 100)
                 {
                     lastVolume = 100;
                 }
             }
-             if(direction == "DOWN")
+            if (direction == "DOWN")
             {
                 lastVolume -= Math.Abs(units);
-                if(lastVolume < 0)
+                if (lastVolume < 0)
                 {
                     lastVolume = 0;
                 }
@@ -68,7 +68,7 @@
 
         public bool MuteDevice()
         {
-            if(IsMuted)
+            if (IsMuted)
             {
                 lastMuted = false;
                 return IsMuted;
