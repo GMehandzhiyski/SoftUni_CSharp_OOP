@@ -21,6 +21,7 @@ namespace VendingRetail.Tests
             Assert.AreEqual(waterCap, cafe.WaterCapacity);
             Assert.AreEqual(buttonsCount, cafe.ButtonsCount);
             Assert.AreEqual(0, cafe.Income);
+
             
         }
 
