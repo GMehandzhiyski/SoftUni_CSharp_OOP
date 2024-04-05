@@ -194,8 +194,8 @@ namespace Television.Tests
 
             TelevisionDevice tv = new TelevisionDevice(brand, price, screenWidth, screenHeigth);
             string direction = "DOWN";
-            int units = 14;
-            int lastVolume = 0;
+            int units = 10;
+            int lastVolume = 3;
 
 
             var actual = tv.VolumeChange(direction, units);
@@ -206,7 +206,7 @@ namespace Television.Tests
         }
 
         [Test]
-        public void Validate_VolumeChangeDown_Minus10()
+        public void Validate_VolumeChangeDown_Minus14()
         {
             string brand = "LG";
             double price = 100;
@@ -214,9 +214,9 @@ namespace Television.Tests
             int screenHeigth = 1048;
 
             TelevisionDevice tv = new TelevisionDevice(brand, price, screenWidth, screenHeigth);
-            string direction = "Down";
-            int units = -10;
-            int lastVolume = 13;
+            string direction = "DOWN";
+            int units = -14;
+            int lastVolume = 0;
 
 
             var actual = tv.VolumeChange(direction, units);
@@ -238,12 +238,31 @@ namespace Television.Tests
             string direction = "Down";
             int units = 19;
             int lastVolume = 13;
+            tv.VolumeChange(direction, units);
 
 
             var actual = tv.VolumeChange(direction, units);
             var expected = $"Volume: {lastVolume}"; ;
 
             Assert.AreEqual(expected, actual);
+
+        }
+
+        [Test]
+        public void Validate_MuteDevice_False()
+        {
+            string brand = "LG";
+            double price = 100;
+            int screenWidth = 1024;
+            int screenHeigth = 1048;
+
+            TelevisionDevice tv = new TelevisionDevice(brand, price, screenWidth, screenHeigth);
+
+            tv.MuteDevice();
+            var actual = tv.MuteDevice();
+
+
+            Assert.IsFalse(actual);
 
         }
 
@@ -265,23 +284,6 @@ namespace Television.Tests
 
         }
 
-        [Test]
-        public void Validate_MuteDevice_False()
-        {
-            string brand = "LG";
-            double price = 100;
-            int screenWidth = 1024;
-            int screenHeigth = 1048;
-
-            TelevisionDevice tv = new TelevisionDevice(brand, price, screenWidth, screenHeigth);
-
-            tv.MuteDevice();
-            var actual = tv.MuteDevice();
-
-
-            Assert.IsFalse(actual);
-
-        }
 
         [Test]
         public void Validate_ToString()
