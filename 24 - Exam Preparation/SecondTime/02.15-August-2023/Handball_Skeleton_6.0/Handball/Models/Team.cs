@@ -17,6 +17,7 @@ namespace Handball.Models
 
         public Team(string name)
         {
+            Name = name;
             pointsEarned = 0;
             players = new List<IPlayer>();  
         }
@@ -47,13 +48,17 @@ namespace Handball.Models
         {
             get
             {
-                double averageRating = players.Average(p => p.Rating);
-                if (players.Any())
+                
+                if (players.Count > 0)
                 {
-                    return Math.Round(averageRating,2);
+                    double overalRating = players.Average(p => p.Rating);
+                    return Math.Round(overalRating, 2);
                 }
-
-                return 0;
+                else 
+                {
+                    return 0;
+                }
+               
                
             }
             private set
@@ -100,10 +105,10 @@ namespace Handball.Models
             sb.AppendLine($"--Overall rating: {OverallRating}");
             if (players.Any())
             {
-                sb.AppendLine($"--Players: ");
+                sb.Append($"--Players: ");
                 foreach (var currPlayer in players)
                 {
-                    sb.Append(currPlayer.Name);
+                    sb.Append(currPlayer.Name + ", ");
                 }
                 sb.Length -= 2;
             }
@@ -112,7 +117,7 @@ namespace Handball.Models
                 sb.AppendLine($"--Players: none");
             }
 
-            return base.ToString();
+            return sb.ToString().Trim();
         }
     }
 }
