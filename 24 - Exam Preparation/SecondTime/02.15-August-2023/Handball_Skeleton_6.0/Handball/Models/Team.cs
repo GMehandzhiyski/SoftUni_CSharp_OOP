@@ -48,7 +48,7 @@ namespace Handball.Models
         {
             get
             {
-                
+              
                 if (players.Count > 0)
                 {
                     double overalRating = players.Average(p => p.Rating);

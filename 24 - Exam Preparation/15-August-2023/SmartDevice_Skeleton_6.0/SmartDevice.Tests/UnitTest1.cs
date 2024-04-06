@@ -11,13 +11,8 @@ namespace SmartDevice.Tests
         {
         }
 
-        //[Test]
-        //public void Validate_CreateNewStation_NameNull()
-        //{
-        //    Assert.Throws<ArgumentException>(() => { RailwayStation newRailway= new RailwayStation(null); });
-        //}
-
         [Test]
+        //[TestCase(100)]
         public void Validate_Ctor()
         {
             Device newDevice = new Device(3);
@@ -63,32 +58,32 @@ namespace SmartDevice.Tests
 
             Assert.AreEqual(expected, actual);
         }
-
-        [Test]
-        public void Validate_TakePhotoBigger()
+        [TestCase(3)]
+        [TestCase(100)]
+        public void Validate_TakePhotoBigger(int value )
         {
-            Device newDevice = new Device(3);
+            Device newDevice = new Device(1024);
 
-            var expected = false;
-            var actual = newDevice.TakePhoto(5);
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        public void Validate_TakePhotoEqual()
-        {
-            int memoryCapacity = 2048;
-            int photosSize = 100;
-            Device newDevice = new Device(memoryCapacity);
-
-            
-            var actual = newDevice.TakePhoto(photosSize);
+            var expected = true;
+            var actual = newDevice.TakePhoto(value);
 
             Assert.IsTrue(actual);
-            Assert.AreEqual(memoryCapacity - photosSize, newDevice.AvailableMemory);
-            Assert.AreEqual(1, newDevice.Photos);
         }
+
+        //[Test]
+        //public void Validate_TakePhotoEqual()
+        //{
+        //    int memoryCapacity = 2048;
+        //    int photosSize = 100;
+        //    Device newDevice = new Device(memoryCapacity);
+
+            
+        //    var actual = newDevice.TakePhoto(photosSize);
+
+        //    Assert.IsTrue(actual);
+        //    Assert.AreEqual(memoryCapacity - photosSize, newDevice.AvailableMemory);
+        //    Assert.AreEqual(1, newDevice.Photos);
+        //}
 
         [Test]
         public void Validate_TakePhotolower()

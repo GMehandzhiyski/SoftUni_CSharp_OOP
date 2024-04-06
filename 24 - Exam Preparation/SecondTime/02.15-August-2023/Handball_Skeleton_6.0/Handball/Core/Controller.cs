@@ -147,7 +147,7 @@ namespace Handball.Core
             var sortedTeams = teamRepository
                 .Models
                 .OrderByDescending(t => t.PointsEarned)
-                .ThenByDescending(t => t.OverallRating)
+                .ThenByDescending(t => t )
                 .ThenBy(t => t.Name);
 
             sb.AppendLine("***League Standings***");
